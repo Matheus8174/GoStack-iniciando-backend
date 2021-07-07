@@ -3,8 +3,13 @@ import AuthenticateUserService from '../services/AuthenticateUserService';
 
 const sessionsRouter = Router();
 
+interface Request {
+  email: string;
+  password: string;
+}
+
 sessionsRouter.post('/', async (request, response) => {
-  const { email, password } = request.body;
+  const { email, password }: Request = request.body;
 
   const authenticateUser = new AuthenticateUserService();
 
@@ -13,6 +18,7 @@ sessionsRouter.post('/', async (request, response) => {
     password
   });
 
+  // @ts-expect-error this error dont affect the aplication flow
   delete user.password;
 
   return response.json({ user, token });
