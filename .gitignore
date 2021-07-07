@@ -1,6 +1,13 @@
 dist
 node_modules
+tmp/
+
+temp/*
+!temp/.gitkeep
 
 # yarn files
 yarn.lock
 yarn-error.log
+
+# env file
+.env
